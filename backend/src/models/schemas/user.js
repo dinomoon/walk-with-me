@@ -1,34 +1,6 @@
-const { Schema } = require('mongoose');
+const mongoose = require('mongoose');
 
-const UserSchema = Schema({
-  isAdmin: {
-    type: Boolean,
-    default: false,
-  },
-  nickname: {
-    type: String,
-    min: 2,
-    max: 10,
-    required: true,
-  },
-  birthYear: {
-    type: Number,
-    required: true,
-  },
-  gender: {
-    type: String,
-    required: true,
-  },
-  area: {
-    type: String,
-    required: true,
-  },
-  bio: {
-    type: String,
-    min: 2,
-    max: 100,
-    default: '',
-  },
+const UserSchema = new mongoose.Schema({
   email: {
     type: String,
     max: 50,
@@ -38,14 +10,30 @@ const UserSchema = Schema({
     type: Number,
     required: true,
   },
-  profileUrl: {
+  nickname: {
     type: String,
-    required: false,
+    min: 2,
+    max: 10,
   },
+  profileImage: Buffer,
+  gender: String,
+  birthYear: Number,
+  area: String,
+  bio: [
+    {
+      _id: mongoose.Types.ObjectId,
+      text: {
+        type: String,
+        min: 2,
+        max: 100,
+        default: '',
+      },
+    },
+  ],
   likes: [
     {
-      type: ObjectId,
-      ref: 'PostSchema',
+      type: mongoose.Types.ObjectId,
+      ref: 'Post',
     },
   ],
 });
