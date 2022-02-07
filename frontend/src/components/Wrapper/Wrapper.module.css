@@ -2,7 +2,8 @@
   margin: 12rem auto auto auto;
   display: flex;
   width: 86%;
-  height: 100vh;
+  height: calc(100vh - 12rem);
   justify-content: center;
+  align-items: center;
   min-width: 36rem;
 }
