@@ -1,0 +1,7 @@
+.wrapper {
+  margin: 120px auto auto auto;
+  display: flex;
+  width: 86%;
+  height: 100vh;
+  justify-content: center;
+}
