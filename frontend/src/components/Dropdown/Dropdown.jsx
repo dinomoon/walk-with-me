@@ -4,7 +4,6 @@ import classes from './Dropdown.module.css';
 const Dropdown = ({ type }) => {
   const optionsObj = {
     status: [
-      { value: '', text: '모집 여부' },
       { value: 'ing', text: '모집 중' },
       { value: 'end', text: '모집 완료' },
     ],
@@ -12,6 +11,8 @@ const Dropdown = ({ type }) => {
       { value: '', text: '카테고리' },
       { value: 'running', text: '달리기' },
       { value: 'walking', text: '걷기' },
+      { value: 'bicycle', text: '자전거' },
+      { value: 'mountain', text: '등산' },
     ],
     age: [
       { value: '', text: '나이' },
