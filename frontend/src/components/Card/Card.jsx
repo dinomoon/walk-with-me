@@ -8,7 +8,7 @@ import heartIcon from './images/heart.svg';
 const Card = ({ ...props }) => {
   if (props.cardType === 'create-card')
     return (
-      <div className={styles[props.cardType]}>
+      <div className={`${styles['card']} ${styles['create-card']}`}>
         <Button
           width='10rem'
           height='10rem'
@@ -23,7 +23,7 @@ const Card = ({ ...props }) => {
 
   if (props.cardType === 'detail-card')
     return (
-      <div className={styles[props.cardType]}>
+      <div className={`${styles['card']} ${styles['detail-card']}`}>
         <div className={styles['detail-tags']}>
           {props.tags.map((tag) => {
             const hashTag = `#${tag}`;
@@ -44,18 +44,18 @@ const Card = ({ ...props }) => {
             );
           })}
         </div>
+        <div className={styles['detail-text-div']}>
+          <div className={styles['detail-text']}>
+            <img src={contactIcon} />
+            <span>{'33'}명</span>
+          </div>
 
-        <div className={styles['detail-card-div']}>
-          <img src={contactIcon} />
-          <span>{'33'}명</span>
+          <div className={styles['detail-text']}>
+            <img src={exploreIcon} />
+            <span>{'위치'}</span>
+          </div>
         </div>
-
-        <div className={styles['detail-card-div']}>
-          <img src={exploreIcon} />
-          <span>{'위치'}</span>
-        </div>
-
-        <div className={styles['detail-card-buttons']}>
+        <div className={styles['detail-buttons-middle']}>
           <Button
             width='26rem'
             height='6rem'
@@ -69,11 +69,29 @@ const Card = ({ ...props }) => {
           <Button
             width='26rem'
             height='6rem'
-            border='1px solid #7EDA8B'
             color='#666666'
             text='참가 신청'
             radius='140px'
             flexBasis='center'
+            bg='#B2F2BB'
+          ></Button>
+        </div>
+        <div className={styles['detail-buttons-bottom']}>
+          <img style={{ width: '2rem', height: '2rem' }} />
+          <Button
+            width='10rem'
+            height='4.6rem'
+            border='1px solid #dddddd'
+            color='#666666'
+            radius='140px'
+            flexBasis='center'
+            bg='#ffffff'
+            text={'likes'}
+            image={heartIcon}
+            ftsize='1.2rem'
+            style={{
+              flexBasis: 'content',
+            }}
           ></Button>
         </div>
       </div>

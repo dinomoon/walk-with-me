@@ -1,13 +1,15 @@
-.create-card {
+.card {
   width: 30rem;
   height: 46rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
   background: #ffffff;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
+}
+.create-card {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .create-card:hover {
   cursor: pointer;
@@ -27,50 +29,59 @@
 }
 
 .recruit-card {
-  width: 30rem;
-  height: 46rem;
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
-  position: absolute;
-  background: #ffffff;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
 }
 
 .detail-card {
-  width: 30rem;
-  height: 46rem;
-  flex-wrap: wrap;
-  background: #ffffff;
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  padding: 2rem;
+  display: inline-block;
+  flex-direction: column;
+}
+.detail-tags {
   display: flex;
   align-content: flex-start;
+  flex-wrap: wrap;
+  margin: 2rem;
+  flex-basis: 9rem;
 }
-.detail-card-button button {
-  flex-basis: center;
-}
-.detail-card-button button:active {
-  transform: scale(0.95);
-  font-size: 1.5rem;
-}
-.detail-card-div {
-  width: inherit;
-  /* align-content: center; */
-  /* flex-grow: 1; */
+.detail-text-div {
+  flex-direction: column;
   display: flex;
-  align-items: center;
+  justify-content: center;
+  flex-basis: 12rem;
 }
-.detail-card-div span {
-  /* transform: translate(0, -50%); */
+.detail-text {
+  width: inherit;
+  display: flex;
+  margin: 1rem 2rem;
+}
+.detail-text span {
   align-self: center;
   cursor: default;
 }
-.detail-card img {
+.detail-text img {
   width: 2.5rem;
   height: 2.5rem;
   align-items: center;
   justify-content: center;
+}
+.detail-tags button {
+}
+.detail-buttons-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.detail-buttons-middle button {
+  flex-basis: center;
+}
+.detail-buttons-middle button:active {
+  transform: scale(0.95);
+  font-size: 1.5rem;
+}
+.detail-buttons-bottom {
+  width: 26rem;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
 }
