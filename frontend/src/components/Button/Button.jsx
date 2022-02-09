@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import kakao from './images/kakao.svg';
 import google from './images/google.svg';
 
@@ -14,6 +14,12 @@ const StyledButton = styled.button`
   color: ${(props) => props.color || '#ffffff'};
   font-size: ${(props) => props.ftsize || '1.6rem'};
   cursor: pointer;
+  ${(props) =>
+    props.disabled &&
+    css`
+      cursor: default;
+      background-color: #e5e5e5;
+    `}
 `;
 
 const BtnImage = styled.i`
