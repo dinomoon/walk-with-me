@@ -184,7 +184,6 @@ const CardDetail = ({ style, post }) => {
           {tags.map((tag) => {
             const hashTag = `${tag}`;
             return (
-              // component에 key props 을 넘길 시 컴포넌트가 항상 리랜더를 하게 됨 (리랜더 최적화 불가)
               <React.Fragment key={uuidv4()}>
                 <Button
                   height='3rem'
@@ -233,7 +232,7 @@ const CardDetail = ({ style, post }) => {
         <div className={styles['detail-buttons-bottom']}>
           <div className={styles['likes-people']}>
             {pic.map((p) => {
-              return <img key={uuidv4()} src={p} />;
+              return <img key={uuidv4()} src={p.profileImage} />;
             })}
           </div>
           <div className={styles['likes']}>
