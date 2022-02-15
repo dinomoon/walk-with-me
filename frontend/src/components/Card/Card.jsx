@@ -10,11 +10,11 @@ const Card = ({ style, post, cardType }) => {
     return <CardCreate style={style} load={true} />;
   }
 
-  let { age, area, author, likeMembers } = post;
+  let { age, area, author, likeMembers, category } = post;
   if (!author) author = { nickname: '이름없음', profileImage: '사진없음' };
-  if (!likeMembers && typeof Array.isArray(likeMembers)) likeMembers = [];
+  if (!likeMembers && Array.isArray(likeMembers)) likeMembers = [];
 
-  const tags = [`#${area}`, `#${age}대`];
+  const tags = [`#${area}`, `#${age}대`, `#${category}`];
 
   if (cardType === 'recruit') {
     const newPost = {
@@ -26,10 +26,20 @@ const Card = ({ style, post, cardType }) => {
     };
     return <CardRecruit style={style} post={newPost} />;
   }
+
   if (cardType === 'detail') {
-    const pic = likeMembers.map((likes, idx) => {
-      if (idx < 3) return likes.profileImage;
-    });
+    // const getImage = async (userId) => {
+    //   const response = await fetch(
+    //     `http://localhost:4000/api/auth/${userId}/profile-image`
+    //   );
+    //   const blobImg = await response.blob();
+    //   return URL.createObjectURL(blobImg);
+    // };
+    // const piccc = likeMembers.slice(0, 3).map((userId) => {
+    //   return getImage(userId);
+    // });
+    // console.log('pic: ', piccc);
+    const pic = likeMembers.slice(0, 3);
     const newPost = {
       ...post,
       tags,
