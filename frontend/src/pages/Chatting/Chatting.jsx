@@ -55,8 +55,6 @@ const Chatting = () => {
     getPost();
     if (post === null) post = JSON.parse(window.localStorage.getItem('post'));
     else window.localStorage.setItem('post', JSON.stringify(post));
-    // console.log(JSON.parse(window.localStorage.getItem('post')));
-    // console.log(post);
 
     setMessageList(post.chat);
     return () => {
