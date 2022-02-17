@@ -23,10 +23,9 @@ const Chatting = () => {
   const socket = useRef();
 
   useEffect(() => {
-    if (user === null) {
+    if (user === null)
       user = JSON.parse(window.localStorage.getItem('loginUser'));
-      post = JSON.parse(window.localStorage.getItem('post'));
-    }
+    if (post === null) post = JSON.parse(window.localStorage.getItem('post'));
 
     socket.current = io('http://localhost:4000', {
       withCredentials: true,
@@ -48,12 +47,17 @@ const Chatting = () => {
       type: NOW_POST,
       payload: response.data,
     });
-    window.localStorage.setItem('post', JSON.stringify(post));
+
     setLoading(false);
   };
 
   useEffect(() => {
     getPost();
+    if (post === null) post = JSON.parse(window.localStorage.getItem('post'));
+    else window.localStorage.setItem('post', JSON.stringify(post));
+    // console.log(JSON.parse(window.localStorage.getItem('post')));
+    // console.log(post);
+
     setMessageList(post.chat);
     return () => {
       dispatch({
@@ -71,6 +75,8 @@ const Chatting = () => {
       profileImgURL: user.profileImgURL,
     });
 
+    post = { ...post, chat: response.data };
+    window.localStorage.setItem('post', JSON.stringify(post));
     setCurrMessage('');
     setMessageList(response.data);
   };
