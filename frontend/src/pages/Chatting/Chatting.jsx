@@ -103,7 +103,13 @@ const Chatting = () => {
                     <div className={styles.author}>
                       <h3>{messageContent.nickname}</h3>
                       <p className={styles.date}>
-                        {new Date(messageContent.time).toLocaleString()}
+                        {new Date(messageContent.time).toLocaleString('ko-KR', {
+                          year: 'numeric',
+                          month: 'numeric',
+                          day: 'numeric',
+                          hour: 'numeric',
+                          minute: 'numeric',
+                        })}
                       </p>
                     </div>
                     <h3 className={styles.content}>{messageContent.text}</h3>
