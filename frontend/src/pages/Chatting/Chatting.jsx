@@ -15,7 +15,7 @@ const currTab = '채팅방';
 
 const Chatting = () => {
   const [state, dispatch] = useContext(Context);
-  const { user, post } = state;
+  let { user, post } = state;
   const { id: postId } = useParams();
   const [loading, setLoading] = useState(true);
   const [currMessage, setCurrMessage] = useState('');
@@ -23,6 +23,11 @@ const Chatting = () => {
   const socket = useRef();
 
   useEffect(() => {
+    if (user === null) {
+      user = JSON.parse(window.localStorage.getItem('loginUser'));
+      post = JSON.parse(window.localStorage.getItem('post'));
+    }
+
     socket.current = io('http://localhost:4000', {
       withCredentials: true,
       extraHeaders: {
@@ -34,9 +39,6 @@ const Chatting = () => {
 
   useEffect(() => {
     socket.current.emit('addUser', user._id);
-    socket.current.on('getUsers', (users) => {
-      console.log(users);
-    });
   }, [user]);
 
   const getPost = async () => {
@@ -46,6 +48,7 @@ const Chatting = () => {
       type: NOW_POST,
       payload: response.data,
     });
+    window.localStorage.setItem('post', JSON.stringify(post));
     setLoading(false);
   };
 
@@ -75,7 +78,6 @@ const Chatting = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
   return (
     <>
       <Header />
