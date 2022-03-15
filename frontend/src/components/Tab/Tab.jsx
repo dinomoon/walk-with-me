@@ -27,8 +27,8 @@ const Tab = ({ currTab, post, user, postId }) => {
     if (post.author._id === user?._id) return 'leader';
 
     const memberIds = post.members.map((member) => member._id);
-    const founded = memberIds.find(id => id === user._id);
-    if (founded) return 'member';
+    const found = memberIds.find(id => id === user._id);
+    if (found) return 'member';
     return 'visitor';
   };
 
